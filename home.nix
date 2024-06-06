@@ -8,6 +8,7 @@
     shellAliases = {
       cat = "bat --paging=never";
       lzg = "lazygit";
+      lzd = "lazydocker";
       fzf = "sk";
       vi = "nvim";
       rm = "rm -i";
@@ -28,6 +29,7 @@
 
       alias cat="bat --paging=never"
       alias lzg='lazygit'
+      alias lzg='lazydocker'
       alias fzf='sk'
       alias vi='nvim'
     '';
