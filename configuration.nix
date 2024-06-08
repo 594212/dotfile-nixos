@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -67,10 +67,10 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
-    xkbOptions = "caps:swapescape";
+    variant = "";
+    options = "caps:swapescape";
   };
   console.useXkbConfig = true;
 
@@ -86,7 +86,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -94,9 +94,9 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
-    naturalScrolling = true;
+    touchpad.naturalScrolling = true;
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sul = {
@@ -110,8 +110,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "sul";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "sul";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -126,6 +126,7 @@
     vim
     telegram-desktop
     brave
+    kitty
     warp-terminal
 
     jetbrains.phpstorm
