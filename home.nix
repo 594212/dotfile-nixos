@@ -20,6 +20,8 @@
     '';
   };
 
+  programs.wezterm = { enable = true; };
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
