@@ -11,7 +11,6 @@
       lzd = "lazydocker";
       fzf = "sk";
       vi = "nvim";
-      rm = "rm -i";
     };
 
     bashrcExtra = ''
